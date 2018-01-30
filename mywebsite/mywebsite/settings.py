@@ -73,15 +73,15 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         # 配置数据类型，这里是mysql
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'golf',
-        # 'USER': 'golf',
-        # 'PASSWORD': 'golf_123#',
-        # 'HOST': '10.1.1.222',
-        # 'POST': '33078'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'golf',
+        'USER': 'golf',
+        'PASSWORD': 'golf_123#',
+        'HOST': '10.1.1.222',
+        'PORT': '33078',
     }
 }
 

@@ -9,12 +9,16 @@ from django.db import models
 '''
 
 
-# class Student(models.Model):
-#     id = models.IntegerField()
-#     age = models.IntegerField()
-#     name = models.CharField(max_length=50)
-#
-#     # 将对象以str的方式显示出来
-#     def __str__(self):
-#         return self.name
+class Student(models.Model):
+    id = models.IntegerField(primary_key=True)
+    age = models.IntegerField()
+    name = models.CharField(max_length=50)
 
+    # 将对象以str的方式显示出来
+    def __str__(self):
+        return self.name
+
+    # 必须要加，指定数据库表的名字，否则查询的时候会将app的名字加上去作为表名
+    # 如:homepage_student作为表名
+    class Meta:
+        db_table = 'student'
