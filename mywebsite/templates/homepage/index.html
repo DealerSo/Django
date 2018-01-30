@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +7,6 @@
 </head>
 <body>
     {{ name }}
-
+    <img src="{% static 'img/homepage/123.jpg' %}">
 </body>
 </html>

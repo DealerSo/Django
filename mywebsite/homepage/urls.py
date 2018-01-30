@@ -1,5 +1,5 @@
 from django.conf.urls import url
-import  homepage.views
+import homepage.views
 
 urlpatterns = [
     url('^start/', homepage.views.start),
