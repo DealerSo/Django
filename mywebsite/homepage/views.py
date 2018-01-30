@@ -19,3 +19,10 @@ def findAll(request):
     students = Student.objects.all()
     content = {'students': students}
     return render(request, 'homepage/studentList.html', content)
+
+
+def getDetail(request):
+    fid = request.GET.get('id')
+    student = Student.objects.get(id=fid)
+    content = {'student': student}
+    return render(request, 'homepage/studentDetail.html', content)

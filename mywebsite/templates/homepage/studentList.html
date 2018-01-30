@@ -6,7 +6,7 @@
 </head>
 <body>
     {% for student in students %}
-        {{ student.id }} : {{ student.name }} : {{ student.age }}
+        <a href="{{ BASE_DIR }}/homepage/getDetail?id={{ student.id }}">{{ student.name }}</a>
         <br/>
     {% endfor %}
 
