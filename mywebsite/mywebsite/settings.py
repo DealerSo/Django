@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'homepage',
+    'article',
 ]
 
 MIDDLEWARE = [
@@ -106,9 +107,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+
+# 后台管理显示中文
+LANGUAGE_CODE = 'zh_Hans'
+# 保存数据是为中国时间
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

@@ -13,6 +13,7 @@ class Student(models.Model):
     id = models.IntegerField(primary_key=True)
     age = models.IntegerField()
     name = models.CharField(max_length=50)
+    createdTime = models.DateTimeField()
 
     # 将对象以str的方式显示出来
     def __str__(self):
