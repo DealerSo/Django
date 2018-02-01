@@ -1,15 +1,12 @@
 <!-- 继承母版页 -->
 {% extends '../common/main.html' %}
 
-<!-- 向母版页传递title参数 -->
+<!-- 重写母版页中的 block title  endblock-->
 {% block title %} 首页 {% endblock %}
 
-<!-- 向母版页传递content数据 -->
+<!-- 重写母版页中的 block content  endblock -->
 {% block content %}
     <h1>{{ name }}</h1>
-    <ul>
-        {% for i in list %}
-            <li>{{ i }} </li>
-        {% endfor %}
-    </ul>
 {% endblock %}
+
+<!-- { % include 'test.html' % } 这里还可以导入一个模板，也可以导入多个 -->
