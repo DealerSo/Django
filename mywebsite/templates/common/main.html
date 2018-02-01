@@ -8,28 +8,26 @@
     {% block js %} {% endblock %}
     <!-- 导入静态css文件 -->
     <link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/common.css' %}"/>
     {% block css %} {% endblock %}
 </head>
 <body bgcolor="#14285f">
-<div class="main_header">
-    <div class="header_img" style="background: url('{% static 'img/main_header.jpg' %}')">
-        <div id="desc">欢迎来到Vincent个人网站</div>
+<div class="main_header clearfix">
+    <div class="main_header_img" style="background: url('{% static 'img/main_header.jpg' %}')">
+        <div id="welcome">欢迎来到Vincent个人网站</div>
     </div>
     <div class="line" style="height: 2px">&nbsp;</div>
     <div style="height: 2px">&nbsp;</div>
     <div class="line" style="height: 1px">&nbsp;</div>
+    <div class="top_menu">
+        {% block top_menu %} {% endblock %}
+    </div>
 </div>
-<div class="menu">
-    <!-- style = "color:#ffffff;" 高亮-->
-    <a href="{{ BASE_DIR }}/homepage/index" style = "color:#ffffff;">首页</a>
-    <a href="#">文章</a>
-    <a href="#">我的足迹</a>
-    <a href="#">留言</a>
-    <a href="#">关于我</a>
-</div>
-<div>
+
+<div class="main_middle">
     {% block content %} {% endblock %}
 </div>
+
 <div class="main_bottom">
     Copyright 2018 Vincent All Rights Reserved
 </div>

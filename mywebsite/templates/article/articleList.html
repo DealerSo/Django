@@ -1,0 +1,17 @@
+{% extends '../common/main.html' %}
+
+{% block title %} 文章列表 {% endblock %}
+
+{% block top_menu %}
+    <a href="/homepage/index">首页</a>
+    <a href="/article/getArticles" style = "color:#ffffff;">文章</a>
+    <a href="#">我的足迹</a>
+    <a href="#">留言</a>
+    <a href="#">关于我</a>
+{% endblock %}
+
+{% block content %}
+    {% for article in articles %}
+        {{ article.articleTitle }}
+    {% endfor %}
+{% endblock %}

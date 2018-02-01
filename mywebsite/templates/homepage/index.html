@@ -4,9 +4,25 @@
 <!-- 重写母版页中的 block title  endblock-->
 {% block title %} 首页 {% endblock %}
 
+<!-- 重写母版页中 top_menu -->
+{% block top_menu %}
+    <a href="/index" style = "color:#ffffff;">首页</a>
+    <a href="/article/getArticles">文章</a>
+    <a href="#">我的足迹</a>
+    <a href="#">留言</a>
+    <a href="#">关于我</a>
+{% endblock %}
+
 <!-- 重写母版页中的 block content  endblock -->
 {% block content %}
     <h1>{{ name }}</h1>
 {% endblock %}
 
 <!-- { % include 'test.html' % } 这里还可以导入一个模板，也可以导入多个 -->
+
+<!-- 必须导入，这样下面才可以使用static，否则static就是invalid -->
+{% load staticfiles %}
+
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
+{% endblock %}
