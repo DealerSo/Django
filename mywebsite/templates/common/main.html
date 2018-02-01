@@ -1,0 +1,16 @@
+<!-- 这是一个母版页,其他模板继承即可-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="pg-header">
+        这个是一个模板页
+    </div>
+    <div>
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

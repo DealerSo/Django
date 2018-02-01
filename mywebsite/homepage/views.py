@@ -11,7 +11,7 @@ def start(request):
 
 
 def index(request):
-    context = {'name': 'home page..'}
+    context = {'name': 'home page..' , 'list' : range(10)}
     return render(request, 'homepage/index.html', context)
 
 

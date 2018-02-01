@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>首页</title>
-</head>
-<body>
-    {{ name }}
-    <img src="{% static '/img/123.jpg' %}">
-</body>
-</html>
+<!-- 继承母版页 -->
+{% extends '../common/main.html' %}
+
+<!-- 向母版页传递title参数 -->
+{% block title %} 首页 {% endblock %}
+
+<!-- 向母版页传递content数据 -->
+{% block content %}
+    <h1>{{ name }}</h1>
+    <ul>
+        {% for i in list %}
+            <li>{{ i }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
