@@ -9,14 +9,16 @@
                 <tr>
                     <th width="5%">序号</th>
                     <th width="15%">主题</th>
-                    <th width="80%">内容</th>
+                    <th width="30%">创建时间</th>
+                    <th width="50%">类型</th>
                 </tr>
             </thead>
             {% for article in articles %}
                 <tr>
                     <td>{{ article.id }}</td>
                     <td>{{ article.articleTitle }}</td>
-                    <td>{{ article.articleContent }}</td>
+                    <td>{{ article.createdTime }}</td>
+                    <td>{{ article.articleCategory.categoryName }}</td>
                 </tr>
             {% endfor %}
         </table>
