@@ -2,17 +2,52 @@
 
 {% block title %} 文章列表 {% endblock %}
 
-{% block top_menu %}
-    <a href="/index">首页</a>
-    <a href="/article/getArticles" style = "color:#ffffff;">文章</a>
-    <a href="#">我的足迹</a>
-    <a href="#">留言</a>
-    <a href="#">关于我</a>
+{% block content %}
+    <table class="table table-bordered articles_table">
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.articleTitle }}</td>
+                <td>{{ article.articleContent }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% for page in pageRange %}
+                <li><a href="/article/listArticles?pageIndex={{ page }}&pageCount=5">{{ page }}</a></li>
+            {% endfor %}
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 {% endblock %}
 
-{% block content %}
-    {% for article in articles %}
-        <h2>{{ article.articleTitle }}</h2>
-        <br/>
-    {% endfor %}
+{% block js %}
+    <script type="text/javascript">
+        $(function () {
+            {% comment %}      $(".main_nav ul li").each(function () {
+                 $(this).click(function () {
+                     // (1) $(this).addClass('active') 为当前点击的元素添加 class="active"
+                     // (2) .siblings() 获得匹配集合中每个元素的同胞, 接着.removeClass('active') 删除class="active"
+                     $(this).addClass('active').siblings().removeClass('active');
+                 });
+             });{% endcomment %}
+            {% comment %}$(".articles_table").bootstrapTable({
+                columns : [
+                    {field:'id', title:'编号'},
+                    {field:'articleTitle', title:'主题'},
+                    {field:'articleContent', title:'内容'},
+                ]
+            });{% endcomment %}
+        })
+    </script>
 {% endblock %}

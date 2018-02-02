@@ -1,5 +1,38 @@
 body {
-    margin: 0px;
+    font-size: 15px;
+    line-height: 1.50;
+    color: #333333;
+    background-color: #fff;
+    position: relative;  /**body 位置相对定位*/
+}
+
+.header {
+    background-color: #6e6e6e;
+}
+
+.navbar-header {
+    width: 200px;
+    font-size: 15px;
+}
+
+.logo {
+    margin-top: 5px;
+}
+
+.logo_content{
+    margin-top: 5px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #2aabd2;
+}
+
+.navbar-default .navbar-nav > .active > a {
+
 }
 
 .main_bottom {
@@ -9,36 +42,6 @@ body {
     width: 267px;
     height: 17px;
     z-index: 1;
-    color: #99CCFF;
-    font-size: 10px;
-}
-
-.main_header_img {
-    background-repeat: repeat-x;
-    height: 140px;
-}
-
-#welcome {
-    font: 16px georgia;
-    color: #99CCFF;
-    padding-left: 25%;
-    line-height: 80px;
-    letter-spacing: .3em;
-}
-
-.main_header .line {
-    background-color: red;
-}
-
-.top_menu {
-    float: right;  /** 靠右显示 */
-    padding-right: 30px;
-}
-
-.top_menu a {
-    color: #3fa6cc;
-    text-decoration: none;
-    margin-left:10px;  /** 每个<a>之间的间距 */
-    font: 15px georgia;
-    font-weight: bold;
+    color: #333333;
+    font-size: 12px;
 }

@@ -4,24 +4,43 @@
 <html lang="en">
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <script type="text/javascript" src="{% static 'bootstrap/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     <!-- 相当于占位符 -->
     {% block js %} {% endblock %}
     <!-- 导入静态css文件 -->
-    <link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <!--自定义样式放在bootstrap样式下面才可以覆盖bootstrap默认样式-->
     <link type="text/css" rel="stylesheet" href="{% static 'css/common.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/main.css' %}"/>
     {% block css %} {% endblock %}
 </head>
-<body bgcolor="#14285f">
-<div class="main_header clearfix">
-    <div class="main_header_img" style="background: url('{% static 'img/main_header.jpg' %}')">
-        <div id="welcome">欢迎来到Vincent个人网站</div>
-    </div>
-    <div class="line" style="height: 2px">&nbsp;</div>
-    <div style="height: 2px">&nbsp;</div>
-    <div class="line" style="height: 1px">&nbsp;</div>
-    <div class="top_menu">
-        {% block top_menu %} {% endblock %}
-    </div>
+<body>
+<div class="main_header">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid header">
+            <div class="navbar-header">
+                <div class="col-md-4 logo">
+                    <a href="http://www.leadbank.com.cn/"><img src="{% static 'img/logo.jpg' %}" /></a>
+                </div>
+                <div class="col-md-8 logo_content">
+                    <div><a href="http://www.leadbank.com.cn/">利得财富</a></div>
+                    <div>管理您的财富</div>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse main_nav" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/index">首页</a></li>
+                    <li><a href="/article/listArticles?pageIndex=1&pageCount=5">文章</a></li>
+                    <li><a href="#">我的足迹</a></li>
+                    <li><a href="#">留言</a></li>
+                    <li><a href="#">关于我</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
 
 <div class="main_middle">
