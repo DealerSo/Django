@@ -17,6 +17,7 @@ def listArticles(request):
     # Article.objects.filter 参数增加过滤条件 status=1
     articles_list = Article.objects.filter(status=1)
 
+    # 获得分页对象
     paginator = Paginator(articles_list, pageCount)
 
     # 对象可分几页

@@ -39,9 +39,9 @@ a:hover {
     position: absolute;
     left: 550px;
     top: 650px;
-    width: 267px;
+    width: 350px;
     height: 17px;
     z-index: 1;
     color: #333333;
-    font-size: 12px;
+    font-size: 15px;
 }
