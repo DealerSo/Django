@@ -122,6 +122,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# 对日期进行格式化，在admin中显示
+DATETIME_FORMAT = 'Y-m-d H:i:s'
+DATE_FORMAT = 'Y-m-d'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 

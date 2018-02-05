@@ -40,6 +40,12 @@ class ArticleCategory(models.Model):
     class Meta:
         # 指定表名
         db_table = 'article_category'
+        '''
+            models.Model类的内部类Meta，有两个特殊的选项：verbose_name和verbose_name_plural。
+            顾名思义，verbose_name为model提供了一个更容易让人阅读的名称，而verbose_name_plural则是这个名称的复数形式
+        '''
+        verbose_name = '文章类型'
+        verbose_name_plural = '文章类型'
 
 
 '''
@@ -72,3 +78,5 @@ class Article(models.Model):
     class Meta:
         # 指定表名
         db_table = 'article'
+        verbose_name = '文章'
+        verbose_name_plural = '文章'
