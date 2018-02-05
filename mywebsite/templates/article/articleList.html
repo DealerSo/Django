@@ -17,7 +17,7 @@
                 <tr>
                     <td>{{ article.id }}</td>
                     <td>{{ article.articleTitle }}</td>
-                    <td>{{ article.createdTime }}</td>
+                    <td>{{ article.createdTime | date:"Y-m-d H:i:s" }}</td>
                     <td>{{ article.articleCategory.categoryName }}</td>
                 </tr>
             {% endfor %}

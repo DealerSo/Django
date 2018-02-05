@@ -21,11 +21,16 @@ from django.db import models
 
 
 class ArticleCategory(models.Model):
-    id = models.IntegerField('主键', primary_key=True, db_column='id')
+    # id = models.IntegerField('主键', primary_key=True, db_column='id')
+    id = models.AutoField(primary_key=True)
     categoryCode = models.CharField('分类编码', max_length=20, db_column='category_code')
     categoryName = models.CharField('分类名称', max_length=30, db_column='category_name')
-    status = models.CharField('状态', max_length=1, db_column='status')
+    # 设定值让status进行选择，默认为default=1 表示有效(类似于select功能)
+    status_val = (('1', u'有效'), ('0', u'无效'))
+    status = models.CharField('状态', choices=status_val, max_length=1, db_column='status', default=1)
     createdTime = models.DateTimeField('创建时间', db_column='created_time')
+    # blank=True -- 是针对表单的，如果 blank=True，表示你的表单填写该字段的时候可以不填
+    # null=True -- null 是针对数据库而言，如果 null=True, 表示数据库的该字段可以为空ss
     updatedTime = models.DateTimeField('更新时间', db_column='updated_time', null=True, blank=True)
 
     # 后台admin中显示，在一对多选择的时候会显示名称，否则显示ArticleCategory object
@@ -50,14 +55,18 @@ class ArticleCategory(models.Model):
 
 
 class Article(models.Model):
-    id = models.IntegerField('主键', primary_key=True, db_column='id')
+    # id = models.IntegerField('主键', primary_key=True, db_column='id')
+    id = models.AutoField(primary_key=True)
     articleTitle = models.CharField('主题', max_length=30, db_column='article_title')
-    articleContent = models.CharField('内容', max_length=500, db_column='article_content')
+    articleContent = models.TextField('内容', max_length=1000, db_column='article_content')
     # 一对多(一个Article对应多个ArticleCategory) on_delete=models.CASCADE 级联删除，也就是当删除主表的数据时候从表中的数据也随着一起删除
-    articleCategory = models.ForeignKey('ArticleCategory', db_column='article_category_id', on_delete=models.CASCADE,
-                                        blank=True, null=True)
-    status = models.CharField('状态', max_length=1, db_column='status')
+    articleCategory = models.ForeignKey('ArticleCategory', db_column='article_category_id', on_delete=models.CASCADE)
+    # 设定值让status进行选择，默认为default=1 表示有效(类似于select功能)
+    status_val = (('1', u'有效'), ('0', u'无效'))
+    status = models.CharField('状态', choices=status_val, max_length=1, db_column='status', default=1)
     createdTime = models.DateTimeField('创建时间', db_column='created_time')
+    # blank=True -- 是针对表单的，如果 blank=True，表示你的表单填写该字段的时候可以不填
+    # null=True -- null 是针对数据库而言，如果 null=True, 表示数据库的该字段可以为空
     updatedTime = models.DateTimeField('更新时间', db_column='updated_time', null=True, blank=True)
 
     class Meta:

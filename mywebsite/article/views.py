@@ -14,8 +14,10 @@ def listArticles(request):
     # pageCount = request.GET.get('pageCount')
     pageCount = 10
 
-    # Article.objects.filter 参数增加过滤条件 status=1
-    articles_list = Article.objects.filter(status=1)
+    # (1) Article.objects.filter 参数增加过滤条件 status=1
+    # (2) 使用objects.filter需要加上排序，否则下一行代码会报警告，这里按照id升序排列，如果写错'-id'表示倒序排列
+    # UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list
+    articles_list = Article.objects.filter(status=1).order_by('id')
 
     # 获得分页对象
     paginator = Paginator(articles_list, pageCount)
