@@ -6,5 +6,4 @@ from django.http import HttpResponse
 
 
 def index(request):
-    context = {'name': 'home page..', 'list': range(10)}
-    return render(request, 'homepage/index.html', context)
+    return render(request, 'homepage/index.html')

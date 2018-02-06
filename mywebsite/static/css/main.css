@@ -1,13 +1,18 @@
 body {
     font-size: 15px;
-    line-height: 1.50;
-    color: #333333;
-    background-color: #fff;
-    position: relative;  /**body 位置相对定位*/
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+    z-index: 1;
+    position: relative; /**body 位置相对定位*/
 }
 
-.header {
-    background-color: #6e6e6e;
+.navbar {
+    margin-bottom: 0px;
+    opacity: 0.8;
 }
 
 .navbar-header {
@@ -19,7 +24,7 @@ body {
     margin-top: 5px;
 }
 
-.logo_content{
+.logo_content {
     margin-top: 5px;
 }
 
@@ -28,20 +33,20 @@ a:hover {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #2aabd2;
+    color: #3790d2;
 }
 
 .navbar-default .navbar-nav > .active > a {
-
+    background-color: #DFDFDF;
 }
 
 .main_bottom {
-    position: absolute;
-    left: 550px;
-    top: 650px;
-    width: 350px;
-    height: 17px;
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
     z-index: 1;
     color: #333333;
     font-size: 15px;
+    font-weight: bold;
+    text-align: center;
 }

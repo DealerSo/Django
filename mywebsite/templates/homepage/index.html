@@ -4,6 +4,12 @@
 <!-- 重写母版页中的 block title  endblock-->
 {% block title %} 首页 {% endblock %}
 
+{% load staticfiles %}
+
+{% block body %}
+    <body style="background: url('{% static 'img/index_pg.jpg' %}') no-repeat fixed top">
+{% endblock %}
+
 <!-- 重写母版页中 top_menu -->
 {% block top_menu %}
     <a href="/index" style = "color:#ffffff;">首页</a>
@@ -15,14 +21,45 @@
 
 <!-- 重写母版页中的 block content  endblock -->
 {% block content %}
-    <h1>{{ name }}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3 class="text-center">利得财富</h3>
+                <h1 class="text-center"><a href="http://www.leadbank.com.cn/">利得金融服务集团</a></h1>
+                <p class="text-center" style="text-align: left;font-weight: bold">
+                    <!--
+                        过滤器
+                        使用形式：{{ value | make_list }}
+                        意义：将value转换成一个list，对于字符串，转换成字符list；对于整数，转换成整数list
+                        例如value是Joel，那么输出将是[u’J’,u’o’,u’e’,u’l’]；value是123，那么输出将是[1,2,3]
+                     -->
+                    {% for i in '123'|make_list %}
+                        &nbsp;
+                    {% endfor %}
+                    利得财富管理中心隶属于上海利得财富资产管理有限公司，坐落于著名的上海陆家嘴金融区最高端楼盘金茂大厦，
+                    彰显公司实力与决心。利得财富诞生于2008年初,由实力雄厚的全国性综合投资集团联合金融界专业人士共同发起。
+                    公司成立至今，已累计服务10000多名会员客户，为客户配置资产超过百亿。利得财富凭借自身的专业知识、稳健
+                    的投资风格、全方位理财服务，赢得了客户的信赖与尊重。“利者，义之和；得者，仁之聚”。这是利得财富人的价
+                    值观，我们相信，唯有义和仁聚才能长久持续地为客户创造价值
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 <!-- { % include 'test.html' % } 这里还可以导入一个模板，也可以导入多个 -->
 
-<!-- 必须导入，这样下面才可以使用static，否则static就是invalid -->
-{% load staticfiles %}
 
+{% block js %}
+    <script type="text/javascript">
+        $(function () {
+            // 给到首页菜单高亮
+            $(".main_nav ul li").eq(0).addClass('active');
+        })
+    </script>
+{% endblock %}
+
+<!-- 必须导入，这样下面才可以使用static，否则static就是invalid -->
 {% block css %}
     <link type="text/css" rel="stylesheet" href="{% static 'css/index.css' %}"/>
 {% endblock %}

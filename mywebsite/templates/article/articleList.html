@@ -1,5 +1,7 @@
 {% extends '../common/main.html' %}
+
 {% load staticfiles %}
+
 {% block title %} 文章列表 {% endblock %}
 
 {% block content %}
@@ -45,20 +47,20 @@
 {% block js %}
     <script type="text/javascript">
         $(function () {
-            {% comment %}      $(".main_nav ul li").each(function () {
-                 $(this).click(function () {
-                     // (1) $(this).addClass('active') 为当前点击的元素添加 class="active"
-                     // (2) .siblings() 获得匹配集合中每个元素的同胞, 接着.removeClass('active') 删除class="active"
-                     $(this).addClass('active').siblings().removeClass('active');
-                 });
-             });{% endcomment %}
+            $(".main_nav ul li a").each(function () {
+                var href = $(this).attr("href");
+                console.log(href.indexOf("/article"));
+                // indexOf 找不到返回-1
+                if (href.indexOf("/article") > -1) {
+                    $(this).parent().addClass('active');
+                } else {
+                    $(this).parent().removeClass('active');
+                }
+            });
         })
     </script>
 {% endblock %}
 
 {% block css %}
     <link type="text/css" rel="stylesheet" href="{% static 'css/article.css' %}"/>
-    <style type="text/css">
-
-    </style>
 {% endblock %}
