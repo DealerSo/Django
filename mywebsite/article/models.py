@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+import json
+from datetime import date
+from datetime import datetime
 
 # Create your models here.
 
@@ -80,3 +83,12 @@ class Article(models.Model):
         db_table = 'article'
         verbose_name = '文章'
         verbose_name_plural = '文章'
+
+
+class ArticleEncoder(json.JSONDecoder):
+    def deault(self, field):
+        if isinstance(field, datetime):
+            return field.strftime('%Y-%m-%d %H:%M:%S')
+        elif isinstance(field, date):
+            return field.strftime('%Y-%m-%d')
+        return json.JSONDecoder.default(self, field)

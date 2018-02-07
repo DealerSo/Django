@@ -42,7 +42,7 @@ a:hover {
 
 .main_bottom {
     position: fixed;
-    bottom: 10px;
+    bottom: 3px;
     width: 100%;
     z-index: 1;
     color: #333333;

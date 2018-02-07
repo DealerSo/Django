@@ -1,5 +1,12 @@
 .article_content {
     padding-top: 100px;
+    color: #102bf0;
+}
+
+.btn{
+    font-size: 10px;
+    line-height: 0.5;
+    padding:10px 10px;
 }
 
 .article_pagination {

@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from article.models import Article
+from article.models import Article, ArticleEncoder
 # 导入分页包
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
+from django.core import serializers
 
 
 # Create your views here.
@@ -34,6 +36,18 @@ def listArticles(request):
     except EmptyPage:
         articles = paginator.page(pageSize)
 
-    content = {'pageRange': pageRange, 'articles': articles}
+    context = {'pageRange': pageRange, 'articles': articles}
 
-    return render(request, 'article/articleList.html', content)
+    return render(request, 'article/articleList.html', context)
+
+
+# 查询文章明细
+def articleDetail(request):
+    pid = request.GET.get('id')
+
+    article = Article.objects.filter(id=pid)
+
+    # 序列化
+    result = serializers.serialize("json", article)
+
+    return HttpResponse(result)
