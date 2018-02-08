@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from article.models import Article, ArticleEncoder
+from article.models import Article
 # 导入分页包
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -41,9 +42,21 @@ def listArticles(request):
     return render(request, 'article/articleList.html', context)
 
 
-# 查询文章明细
+'''
+(1) django为用户实现防止跨站请求伪造的功能，通过中间件 django.middleware.csrf.CsrfViewMiddleware 来完成。
+而对于django中设置防跨站请求伪造功能有分为全局和局部。
+全局：
+中间件 django.middleware.csrf.CsrfViewMiddleware
+局部：
+@csrf_protect，为当前函数强制设置防跨站请求伪造功能，即便settings中没有设置全局中间件。
+@csrf_exempt，取消当前函数防跨站请求伪造功能，即便settings中设置了全局中间件。
+注意：from django.views.decorators.csrf import csrf_exempt,csrf_protect
+
+参考：https://www.cnblogs.com/zhaof/p/6281482.html
+'''
+@csrf_exempt
 def articleDetail(request):
-    pid = request.GET.get('id')
+    pid = request.POST['id']
 
     article = Article.objects.filter(id=pid)
 
