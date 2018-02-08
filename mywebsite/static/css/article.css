@@ -3,7 +3,7 @@
     color: #102bf0;
 }
 
-.btn{
+.btn {
     font-size: 10px;
     line-height: 0.5;
     padding:10px 10px;
@@ -11,4 +11,15 @@
 
 .article_pagination {
     float: right;
+}
+
+.modal-content {
+    top: 30px;
+    background-color: #fcf8e3;
+}
+
+.modal-title {
+    font-size: 16px;
+    font-family: Georgia;
+    font-weight: bold;
 }
