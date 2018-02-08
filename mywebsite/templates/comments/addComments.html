@@ -1,0 +1,39 @@
+{% extends '../common/main.html' %}
+
+{% load staticfiles %}
+
+{% block title %} 留言板块 {% endblock %}
+
+{% block body%}
+    <body style="background: url('{% static 'img/comment_bg.jpg' %}') no-repeat fixed top">
+{% endblock %}
+
+
+{% block content %}
+
+
+
+{% endblock %}
+
+
+<!-- 脚本 -->
+{% block js %}
+    <script type="text/javascript">
+        $(function(){
+             $(".main_nav ul li a").each(function () {
+                var href = $(this).attr("href");
+                // indexOf 找不到返回-1
+                if (href.indexOf("/comments") > -1) {
+                    $(this).parent().addClass('active');
+                } else {
+                    $(this).parent().removeClass('active');
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+<!-- 样式 -->
+{% block css %}
+
+{% endblock %}
