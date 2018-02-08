@@ -11,7 +11,11 @@
 
 {% block content %}
 
-
+    <div class="operation">
+        <button type="button" class="btn btn-info oper_btn">发表留言</button>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-info oper_btn">浏览留言</button>
+    </div>
 
 {% endblock %}
 
@@ -35,5 +39,5 @@
 
 <!-- 样式 -->
 {% block css %}
-
+    <link type="text/css" rel="stylesheet" href="{% static 'css/comments.css' %}"/>
 {% endblock %}

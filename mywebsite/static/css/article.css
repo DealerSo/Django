@@ -1,5 +1,5 @@
 .article_content {
-    padding-top: 100px;
+    padding-top: 50px;
     color: #777;
 }
 
@@ -27,6 +27,8 @@
 .btn-primary {
     background-color: #9d9d9d;
     border-color: #9d9d9d;
+    border-radius:10px;
+    outline:0 none !important; /** CSS 去掉按钮选中时的蓝色外边框 !important 表示有效生效 */
 }
 
 .form-control {
