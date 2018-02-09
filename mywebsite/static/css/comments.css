@@ -30,3 +30,8 @@
     font-weight: bold;
     color: #1bd7b6;
 }
+
+.form-horizontal .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+}

@@ -112,19 +112,27 @@
             });
 
             // 失去焦距后触发
-            $("#code").blur(function(){
+            $("#code").blur(function () {
                 var code = $(this).val();
+                console.log(code);
                 var picCode = $("#picCode").val();
-                if(code.toUpperCase() == picCode.toUpperCase()){
-                    $("#validate_code").removeClass("has-error");
-                    $("#validate_code").addClass("has-success");
-                    $(".glyphicon-remove").css("display","none");
-                    $(".glyphicon-ok").css("display","block");
+                if (code != "") {
+                    if (code.toUpperCase() == picCode.toUpperCase()) {
+                        $("#validate_code").removeClass("has-error");
+                        $("#validate_code").addClass("has-success");
+                        $(".glyphicon-remove").css("display", "none");
+                        $(".glyphicon-ok").css("display", "block");
+                    } else {
+                        $("#validate_code").removeClass("has-success");
+                        $("#validate_code").addClass("has-error");
+                        $(".glyphicon-ok").css("display", "none");
+                        $(".glyphicon-remove").css("display", "block");
+                    }
                 }else{
+                    $("#validate_code").removeClass("has-error");
                     $("#validate_code").removeClass("has-success");
-                    $("#validate_code").addClass("has-error");
-                    $(".glyphicon-ok").css("display","none");
-                    $(".glyphicon-remove").css("display","block");
+                    $(".glyphicon-remove").css("display", "none");
+                    $(".glyphicon-ok").css("display", "none");
                 }
             })
         });
