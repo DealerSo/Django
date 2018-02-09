@@ -69,7 +69,7 @@ class Article(models.Model):
     articleTitle = models.CharField('主题', max_length=30, db_column='article_title')
     articleContent = models.TextField('内容', max_length=1000, db_column='article_content')
     # 一对多(一个Article对应多个ArticleCategory) on_delete=models.CASCADE 级联删除，也就是当删除主表的数据时候从表中的数据也随着一起删除
-    articleCategory = models.ForeignKey('ArticleCategory', db_column='article_category_id', on_delete=models.CASCADE)
+    articleCategory = models.ForeignKey('ArticleCategory', db_column='article_category_id', on_delete=models.CASCADE,null=True)
     # 设定值让status进行选择，默认为default=1 表示有效(类似于select功能)
     status_val = (('1', u'有效'), ('0', u'无效'))
     status = models.CharField('状态', choices=status_val, max_length=1, db_column='status', default=1)
