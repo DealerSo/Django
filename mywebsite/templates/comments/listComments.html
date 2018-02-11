@@ -38,7 +38,7 @@
                         <tr>
                             <td>{{ foo.name }}</td>
                             <td>{{ foo.email }}</td>
-                            <!-- 使用自定义过滤器(自定义标签) -->
+                            <!-- 使用自定义过滤器(自定义标签),将手机号的3到7位进行掩码处理 -->
                             <td>{{ foo.phone | maskPhone:"3-7"}}</td>
                             <td>
                                 {% if foo.sex == "1" %}
