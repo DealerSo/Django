@@ -70,7 +70,7 @@
             <div class="form-group">
                 <label for="code" class="col-sm-2 col-sm-offset-2 control-label">验证码</label>
                 <div id="validate_code" class="col-sm-1">
-                    <input type="text" class="form-control" id="code" name="code" placeholder="">
+                    <input type="text" class="form-control" id="code" name="code" maxlength="4" placeholder="">
                     <span class="glyphicon glyphicon-ok form-control-feedback" style="right: 10px;display: none" aria-hidden="true"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" style="right: 10px;display: none" aria-hidden="true"></span>
                 </div>
@@ -134,6 +134,8 @@
                         $("#validate_code").addClass("has-error");
                         $(".glyphicon-ok").css("display", "none");
                         $(".glyphicon-remove").css("display", "block");
+                        // 刷新图形验证码，触发click事件
+                        $("#changeCode").trigger("click");
                     }
                 } else {
                     // 清空验证码数据
