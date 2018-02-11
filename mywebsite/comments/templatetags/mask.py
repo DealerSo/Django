@@ -20,4 +20,4 @@ def maskPhone(phone,interval):
 
 
 if __name__ == '__main__':
-    print(maskPhone('13816164283', "3,7"))
+    print(maskPhone('13816164283', "3-7"))
