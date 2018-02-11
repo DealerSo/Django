@@ -7,7 +7,7 @@ from comments.models import *
 @admin.register(Comments)
 class CommentsAdmin(admin.ModelAdmin):
     # 后端显示字段
-    list_display = ('name', 'email', 'telephone', 'sex', 'title', 'content', 'status', 'createdTime', 'updatedTime')
+    list_display = ('name', 'email', 'phone', 'sex', 'title', 'content', 'status', 'createdTime', 'updatedTime')
 
     '''
         取消后台这些功能，这些方法都是在ModelAdmin类中
