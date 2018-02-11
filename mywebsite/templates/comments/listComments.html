@@ -1,6 +1,8 @@
 {% extends '../common/main.html' %}
 
 {% load staticfiles %}
+<!-- 导入自定义过滤器(自定义标签)文件名mask.py,在templatetags目录下 -->
+{% load mask %}
 
 {% block title %} 浏览留言 {% endblock %}
 
@@ -36,7 +38,8 @@
                         <tr>
                             <td>{{ foo.name }}</td>
                             <td>{{ foo.email }}</td>
-                            <td>{{ foo.phone }}</td>
+                            <!-- 使用自定义过滤器(自定义标签) -->
+                            <td>{{ foo.phone | maskPhone:"3-7"}}</td>
                             <td>
                                 {% if foo.sex == "1" %}
                                     男

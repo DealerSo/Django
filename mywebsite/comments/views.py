@@ -21,7 +21,8 @@ def saveComments(request):
     sex = request.POST['sex']
     title = request.POST['title']
     content = request.POST['content']
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # 当前时间
+    now = datetime.datetime.now()
     comments = Comments(name=name, email=email, phone=phone, sex=sex, title=title, content=content, createdTime=now)
     comments.save();
     ######################################保存留言--结束######################################
