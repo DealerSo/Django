@@ -7,7 +7,7 @@ class Comments(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField('姓名', max_length=30, db_column='name')
     email = models.EmailField('邮箱', max_length=50, db_column='email')
-    telephone = models.CharField('手机号', max_length=11, db_column='phone')
+    phone = models.CharField('手机号', max_length=11, db_column='phone')
     sex = models.CharField('性别', max_length=1, db_column='sex')
     title = models.CharField('主题', max_length=100, db_column='title')
     content = models.TextField('内容', max_length=500, db_column='content')
