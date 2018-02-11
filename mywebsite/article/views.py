@@ -27,6 +27,7 @@ def listArticles(request):
 
     # 对象可分几页
     pageSize = paginator.num_pages
+    # 前端显示的页数
     pageRange = range(1, pageSize + 1)
     try:
         # 获取pageIndex页中的内容,比如：pageIndex为1,那么就获取第一页中的内容
@@ -39,7 +40,7 @@ def listArticles(request):
 
     context = {'pageRange': pageRange, 'articles': articles}
 
-    return render(request, 'article/articleList.html', context)
+    return render(request, 'article/listArticle.html', context)
 
 
 '''

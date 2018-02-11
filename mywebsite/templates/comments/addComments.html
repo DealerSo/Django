@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 
-{% block title %} 留言板块 {% endblock %}
+{% block title %} 发布留言 {% endblock %}
 
 {% block body%}
     <body style="background: url('{% static 'img/comment_bg.jpg' %}') no-repeat fixed top">
@@ -12,23 +12,23 @@
 {% block content %}
 
     <div class="operation">
-        <button type="button" class="btn btn-info oper_btn">发表留言</button>
+        <button type="button" class="btn btn-info oper_btn pub_comments">发表留言</button>
         &nbsp;&nbsp;
-        <button type="button" class="btn btn-info oper_btn">浏览留言</button>
+        <button type="button" class="btn btn-info oper_btn view_comments">浏览留言</button>
     </div>
 
     <div class="comments">
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="post" action="/comments/saveComments">
             <div class="form-group">
                 <label for="name" class="col-sm-2 col-sm-offset-2 control-label">姓名</label>
                 <div class="col-sm-4">
-                    <input type="name" class="form-control" id="name" placeholder="姓名">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-2 col-sm-offset-2 control-label">邮箱</label>
                 <div class="col-sm-2">
-                    <input type="email" class="form-control" id="email" placeholder="邮箱">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
                 </div>
                 <div class="col-sm-2">
                     <span class="description">
@@ -39,7 +39,7 @@
             <div class="form-group">
                 <label for="telephone" class="col-sm-2 col-sm-offset-2 control-label">手机号</label>
                 <div class="col-sm-2">
-                    <input type="telephone" class="form-control" id="telephone" placeholder="手机号">
+                    <input type="text" class="form-control" id="telephone" name="telephone" placeholder="手机号">
                 </div>
                 <div class="col-sm-2">
                     <span class="description">
@@ -59,19 +59,19 @@
             <div class="form-group">
                 <label for="title" class="col-sm-2 col-sm-offset-2 control-label">留言主题</label>
                 <div class="col-sm-4">
-                    <input type="title" class="form-control" id="title" placeholder="留言主题">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="留言主题">
                 </div>
             </div>
             <div class="form-group">
                 <label for="content" class="col-sm-2 col-sm-offset-2 control-label">留言内容</label>
                 <div class="col-sm-4">
-                    <textarea class="form-control" rows="5"></textarea>
+                    <textarea class="form-control" rows="5" id="content" name="content"></textarea>
                 </div>
             </div>
              <div class="form-group">
                 <label for="code" class="col-sm-2 col-sm-offset-2 control-label">验证码</label>
                 <div id="validate_code" class="col-sm-1">
-                    <input type="text" class="form-control" id="code" placeholder="">
+                    <input type="text" class="form-control" id="code" name="code" placeholder="">
                     <span class="glyphicon glyphicon-ok form-control-feedback" style="right: 10px;display: none" aria-hidden="true"></span>
                     <span class="glyphicon glyphicon-remove form-control-feedback" style="right: 10px;display: none" aria-hidden="true"></span>
                 </div>
@@ -101,6 +101,16 @@
     <script type="text/javascript" src="{% static 'js/code.js' %}"></script>
     <script type="text/javascript">
         $(function () {
+
+            $(".view_comments").removeClass("active");
+            // 默认选中发布留言
+            $(".pub_comments").addClass('active');
+
+            $(".view_comments").click(function(){
+                 window.location.href = "/comments/listComments?pageIndex=1";
+
+            });
+
             $(".main_nav ul li a").each(function () {
                 var href = $(this).attr("href");
                 // indexOf 找不到返回-1

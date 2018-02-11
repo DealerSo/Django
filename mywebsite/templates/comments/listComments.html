@@ -1,0 +1,108 @@
+{% extends '../common/main.html' %}
+
+{% load staticfiles %}
+
+{% block title %} 浏览留言 {% endblock %}
+
+{% block body%}
+    <body style="background: url('{% static 'img/comment_bg.jpg' %}') no-repeat fixed top">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="operation">
+        <button type="button" class="btn btn-info oper_btn pub_comments">发表留言</button>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-info oper_btn view_comments">浏览留言</button>
+    </div>
+
+    <div class="container comments_content">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th width="10%">姓名</th>
+                        <th width="10%">邮箱</th>
+                        <th width="10%">手机号</th>
+                        <th width="10%">性别</th>
+                        <th width="15%">主题</th>
+                        <th width="30%">内容</th>
+                        <th width="15%">创建时间</th>
+                    </tr>
+                    </thead>
+                    {% for foo in comments %}
+                        <tr>
+                            <td>{{ foo.name }}</td>
+                            <td>{{ foo.email }}</td>
+                            <td>{{ foo.telephone }}</td>
+                            <td>
+                                {% if foo.sex == "1" %}
+                                    男
+                                {% elif foo.sex == "2" %}
+                                    女
+                                {% else %}
+                                    未知
+                                {% endif %}
+                            </td>
+                            <td>{{ foo.title }}</td>
+                            <td>{{ foo.content }}</td>
+                            <td>{{ foo.createdTime | date:"Y-m-d H:i:s" }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <nav aria-label="Page navigation" class="comments_pagination">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% for page in pageRange %}
+                            <li><a href="/article/listArticles?pageIndex={{ page }}">{{ page }}</a></li>
+                        {% endfor %}
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+<!-- 脚本 -->
+{% block js %}
+
+    <script type="text/javascript">
+        $(function(){
+            $(".pub_comments").removeClass("active");
+            $(".view_comments").addClass("active");
+
+            $(".pub_comments").click(function(){
+                 window.location.href = "/comments/addComments";
+            });
+
+            $(".main_nav ul li a").each(function () {
+                var href = $(this).attr("href");
+                // indexOf 找不到返回-1
+                if (href.indexOf("/comments") > -1) {
+                    $(this).parent().addClass('active');
+                } else {
+                    $(this).parent().removeClass('active');
+                }
+            });
+        })
+    </script>
+
+{% endblock %}
+
+<!-- 样式 -->
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/comments.css' %}"/>
+{% endblock %}

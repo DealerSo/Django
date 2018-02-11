@@ -9,6 +9,12 @@
     outline: 0 none !important; /** CSS 去掉按钮选中时的蓝色外边框 !important 表示有效生效 */
 }
 
+.oper_btn.active {
+    background: #1bd7b6;
+    border-color: #1bd7b6;
+}
+
+
 .comments {
     padding-top: 20px;
 }
@@ -34,4 +40,13 @@
 .form-horizontal .form-group {
     margin-left: 0px;
     margin-right: 0px;
+}
+
+.comments_content {
+    padding-top: 30px;
+    color: #777;
+}
+
+.comments_pagination {
+    float: right;
 }
